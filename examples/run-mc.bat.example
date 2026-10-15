@@ -1,0 +1,25 @@
+@echo off
+chcp 65001 >nul
+title Minecraft Headless Dedicated Server
+
+:: Working Directory
+cd /d "%~dp0"
+
+:: Java Executable Path (Requires Java 21+ for modern Minecraft & Fabric)
+set JAVA_EXE=java.exe
+if exist "E:\Java21\bin\java.exe" set JAVA_EXE=E:\Java21\bin\java.exe
+if exist "C:\Program Files\Microsoft\jdk-21.0.7-hotspot\bin\java.exe" set JAVA_EXE="C:\Program Files\Microsoft\jdk-21.0.7-hotspot\bin\java.exe"
+
+:: JVM Memory and High-Performance G1GC Tuning Parameters
+set JVM_OPTS=-Xms4G -Xmx10G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1
+
+:: Server JAR
+set SERVER_JAR=fabric-server-launch.jar
+
+:: Launch Server without GUI
+echo Starting Minecraft Dedicated Server...
+%JAVA_EXE% %JVM_OPTS% -jar %SERVER_JAR% nogui
+
+if %ERRORLEVEL% NEQ 0 (
+    echo Server exited with error code %ERRORLEVEL%.
+)

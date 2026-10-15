@@ -1,0 +1,19 @@
+# Visual Studio / .NET
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.suo
+*.user
+
+# Minecraft runtime data
+*.log
+*.zip
+logs/
+world/
+backups/
+
+# System
+.DS_Store
+Thumbs.db

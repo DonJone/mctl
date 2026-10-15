@@ -1,0 +1,13 @@
+# Minecraft Server Configuration Example
+server-port=25565
+enable-rcon=true
+rcon.port=25575
+rcon.password=YOUR_STRONG_PASSWORD_HERE
+broadcast-rcon-to-ops=true
+max-players=20
+online-mode=true
+view-distance=10
+simulation-distance=8
+gamemode=survival
+difficulty=normal
+motd=A Minecraft Server Managed by mctl
