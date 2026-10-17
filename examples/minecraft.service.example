@@ -1,0 +1,20 @@
+[Unit]
+Description=Minecraft Dedicated Server
+After=network.target
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/srv/minecraft
+Restart=on-failure
+RestartSec=15s
+TimeoutStopSec=45s
+
+ExecStart=/usr/bin/java -Xms4G -Xmx6G -XX:+UseG1GC -jar server.jar nogui
+
+# Graceful stop via mctl
+ExecStop=/bin/sh -c "if [ -x /usr/local/bin/mctl ]; then /usr/local/bin/mctl stop; else kill -TERM $MAINPID; fi"
+
+[Install]
+WantedBy=multi-user.target

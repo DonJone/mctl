@@ -1,15 +1,19 @@
-# Visual Studio / .NET
+# Rust
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Visual Studio / .NET (legacy)
 bin/
 obj/
 *.exe
 *.dll
 *.pdb
-*.suo
-*.user
 
 # Minecraft runtime data
 *.log
 *.zip
+*.tar.gz
 logs/
 world/
 backups/

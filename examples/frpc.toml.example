@@ -26,7 +26,7 @@ remotePort = 24454          # Mapped public voice port
 
 # 3. Secure Management SSH (TCP)
 [[proxies]]
-name = "win-ssh"
+name = "mgmt-ssh"
 type = "tcp"
 localIP = "127.0.0.1"
 localPort = 22

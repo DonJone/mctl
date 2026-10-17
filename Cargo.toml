@@ -1,0 +1,25 @@
+[package]
+name = "mctl"
+version = "2.0.0"
+edition = "2021"
+authors = ["DonJone <https://github.com/DonJone>"]
+description = "High-performance, cross-platform Minecraft dedicated server CLI management tool (Linux / Windows / macOS)"
+readme = "README.md"
+repository = "https://github.com/DonJone/mctl"
+license = "LicenseRef-NC-ESL"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+flate2 = "1.0"
+tar = "0.4"
+chrono = "0.4"
+colored = "2.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
